@@ -57,20 +57,26 @@ body{
 }
 
 .images-header{
-    display: grid;
-    grid-template-columns: 2fr 3fr 1fr;
+    display: flex;
+    
     gap: 20px;
     padding: 16px 20px;
     background-color: #F2F5FF;
-    font-family: var(--font-family);
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 14px;
     color: #0b0b0b;
 }
 
-.header-name, .header-url, .header-delete{
+.header-name, .header-url{
     text-align: left;
+    flex: 6;
+    min-width: 0;
+}
+
+.header-delete{
+    text-align: left;
+    flex: 1;
 }
 
 .images-list{
@@ -80,8 +86,9 @@ body{
 }
 
 .image-item{
-    display: grid;
-    grid-template-columns: 2fr 3fr 1fr;
+    display: flex;
+
+    flex-direction: row;
     gap: 20px;
     padding: 16px 20px;
     border-bottom: 1px solid #E8EEFF;
@@ -105,6 +112,8 @@ body{
     font-weight: 500;
     font-size: 14px;
     color: #0b0b0b;
+    flex: 6;
+    min-width: 0;
 }
 
 .image-icon{
@@ -120,6 +129,8 @@ body{
 
 .image-url-wrapper{
     text-align: left;
+    flex: 6;
+    min-width: 0;
 }
 
 .image-url{
@@ -142,6 +153,7 @@ body{
 
 .image-delete{
     text-align: center;
+    flex: 1
 }
 
 .delete-btn{
