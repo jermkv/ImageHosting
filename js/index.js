@@ -4,6 +4,10 @@ let images = []
 
 
 function changeImage(){
+
+    loadedImages = getAllImages()
+    images = loadedImages.map(img => img.url)
+
     if(images.length === 0) return;
     image.style.opacity = 0;
     setTimeout(()=>{
