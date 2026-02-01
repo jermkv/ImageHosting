@@ -37,23 +37,27 @@ async function handleFile(file){
     showStatus('Uploading...', 'info')
 
     try{
-        const base64 = await fileToBase64(file)
-        const success = saveImage(file.name, base64, file.size)
-
-        if(success) {
-            showStatus('Upload successful!', 'success')
+        const formData = new FormData()
+        formData.append('file', file)
         
+        const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
 
-        const input = document.getElementById('current-upload-input')
-        if(input){
-            input.value = base64.substring(0, 50) + '...'
-            currentUrl = base64
+        })
+        const result = await response.json()
 
+        if (response.ok){
+            showStatus('Upload successful!', 'success')
+
+            const input = document.getElementById('current-upload-input')
+            if(input){
+                imageUrl = result.image.url
+                input.value = imageUrl.length > 50 ? imageUrl.substring(0, 50) + "...": imageUrl;
+                currentUrl = imageUrl
+            }
+            document.getElementById('fileInput').value = ''
         }
-        document.getElementById('fileInput').value = ''
-    }else{
-        showStatus('Upload failed. Please try again', 'error')
-    }
     }
     catch(error){
         showStatus('Upload failed' + error.message, 'error')
@@ -65,7 +69,8 @@ async function copyUrl(){
     if(!currentUrl) return;
 
     try{
-        await navigator.clipboard.writeText(currentUrl)
+        const host = window.location.origin
+        await navigator.clipboard.writeText(host+currentUrl)
         showStatus('URL copied', 'success')
 
         const btn = document.getElementById('copy-button')

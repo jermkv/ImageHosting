@@ -159,8 +159,8 @@ input[type="file"]{
 }
 
 .upload-status.success{
-    background-color: #d4edda;
-    color: aquamarine;
+    background-color: #ffffff;
+    color: greenyellow;
     border: 1px solid #cfded2;
 }
 

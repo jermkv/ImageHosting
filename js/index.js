@@ -8,7 +8,10 @@ function changeImage(){
     loadedImages = getAllImages()
     images = loadedImages.map(img => img.url)
 
-    if(images.length === 0) return;
+    if(images.length === 0) {
+        console.log("no images found");
+        return
+    };
     image.style.opacity = 0;
     setTimeout(()=>{
         image.src = images[index]
