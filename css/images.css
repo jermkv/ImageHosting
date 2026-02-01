@@ -1,9 +1,9 @@
-body{
+body {
     background: #fff
 }
 
 
-.header > h1{
+.header>h1 {
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 16px;
@@ -11,7 +11,8 @@ body{
     letter-spacing: -0.02em;
     color: #0b0b0b;
 }
-.header > h2{
+
+.header>h2 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 14px;
@@ -20,14 +21,15 @@ body{
     color: #0b0b0b;
 }
 
-.choose{
+.choose {
     display: flex;
     justify-content: center;
     margin-top: 50px;
 
 }
 
-.text_upload, .text_image{
+.text_upload,
+.text_image {
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 20px;
@@ -35,20 +37,21 @@ body{
     transition: color 0.3s ease-in-out;
 }
 
-.text_upload{
+.text_upload {
     color: #adc0f8;
     margin-right: 18px;
 }
 
-.text_image{
+.text_image {
     color: #0060ff;
 }
 
-.text_upload:hover, .text_image:hover{
+.text_upload:hover,
+.text_image:hover {
     opacity: 0.8;
 }
 
-.images-container{
+.images-container {
     margin-top: 50px;
     max-width: 800px;
     margin-left: auto;
@@ -56,9 +59,9 @@ body{
     background-color: #fff;
 }
 
-.images-header{
+.images-header {
     display: flex;
-    
+
     gap: 20px;
     padding: 16px 20px;
     background-color: #F2F5FF;
@@ -68,24 +71,25 @@ body{
     color: #0b0b0b;
 }
 
-.header-name, .header-url{
+.header-name,
+.header-url {
     text-align: left;
     flex: 6;
     min-width: 0;
 }
 
-.header-delete{
+.header-delete {
     text-align: left;
     flex: 1;
 }
 
-.images-list{
+.images-list {
     border: 2px solid #E8EEFF;
     border-radius: 8px;
     overflow: hidden;
 }
 
-.image-item{
+.image-item {
     display: flex;
 
     flex-direction: row;
@@ -96,15 +100,15 @@ body{
     transition: background-color 0.2s ease;
 }
 
-.image-item:last-child{
+.image-item:last-child {
     border-bottom: none;
 }
 
-.image-item:hover{
+.image-item:hover {
     background-color: #F9FAFF;
 }
 
-.image-name{
+.image-name {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -116,24 +120,24 @@ body{
     min-width: 0;
 }
 
-.image-icon{
+.image-icon {
     font-size: 20px;
     flex-shrink: 0;
 }
 
-.image-name span{
+.image-name span {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.image-url-wrapper{
+.image-url-wrapper {
     text-align: left;
     flex: 6;
     min-width: 0;
 }
 
-.image-url{
+.image-url {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 13px;
@@ -146,17 +150,17 @@ body{
     transition: opacity 0.2s ease;
 }
 
-.image-url:hover{
+.image-url:hover {
     opacity: 0.7;
     text-decoration: underline;
 }
 
-.image-delete{
+.image-delete {
     text-align: center;
     flex: 1
 }
 
-.delete-btn{
+.delete-btn {
     background: transparent;
     border: 2px solid #E8EEFF;
     border-radius: 6px;
@@ -166,18 +170,18 @@ body{
     transition: all 0.2s ease;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
     background-color: #ffebee;
     border-color: #ff5252;
     transform: scale(1.05);
 }
 
-.empty-state{
+.empty-state {
     padding: 60px 20px;
     text-align: center;
 }
 
-.empty-state p{
+.empty-state p {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
@@ -185,7 +189,7 @@ body{
     margin-bottom: 20px;
 }
 
-.empty-state a{
+.empty-state a {
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 12px;
@@ -199,6 +203,64 @@ body{
     transition: opacity 0.2s ease;
 }
 
-.empty-state a:hover{
+.empty-state a:hover {
     opacity: 0.8;
+}
+
+.image-meta {
+    display: none;
+    gap: 10px;
+    font-size: 0.85em;
+    font-family: 'Courier New', Courier, monospace;
+    color: #000000;
+    margin: 5px 0;
+}
+
+.image-size,
+.image-date {
+    padding: 2px 6px;
+    background: white;
+    border-radius: 3px;
+}
+
+
+
+.image-item:hover .image-meta {
+    display: flex;
+}
+
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 24px 20px;
+}
+
+.load-more-btn {
+    background-color: #0060ff;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.load-more-btn:hover:not(:disabled) {
+    background-color: #0052d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 96, 255, 0.3);
+}
+
+.load-more-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.load-more-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
 }

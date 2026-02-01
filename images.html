@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/images.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -33,6 +35,13 @@
                 <!--Будем сюда подгружать через js изображения-->
             </div>
 
+            <!-- Кнопка для пагинации -->
+            <div class="pagination-wrapper">
+                <button id="load-more-btn" class="load-more-btn" onclick="loadMoreImages()" style="display: none;">
+                    Загрузить еще
+                </button>
+            </div>
+
             <!--Пустое состояие-->
             <div id="empty-state" class="empty-state" style="display: none;">
                 <p>No images uploaded yet</p>
@@ -41,7 +50,9 @@
         </div>
     </div>
 
-    <script src="js/storage.js"></script>
+    <script src="js/images-state.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/images-list.js"></script>
 </body>
+
 </html>

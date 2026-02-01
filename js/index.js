@@ -1,43 +1,70 @@
-const image = document.getElementById('image')
-let index = 0
-let images = []
+/*******************************
+ * Слайдшоу изображений
+ *******************************/
 
+const imageEl = document.getElementById('image');
+let slideIndex = 0;
+let slideTimer = null;
 
-function changeImage(){
+/**
+ * Плавно переключает изображение
+ */
+function changeImage() {
+    const images = getImages().map(img => img.url);
 
-    loadedImages = getAllImages()
-    images = loadedImages.map(img => img.url)
-
-    if(images.length === 0) {
-        console.log("no images found");
-        return
-    };
-    image.style.opacity = 0;
-    setTimeout(()=>{
-        image.src = images[index]
-        image.style.opacity = 1
-        index = (index + 1) % images.length
-    }, 800)
-}
-
-function startSlideShow(){
-    if(images.length === 0){
-        return
+    if (images.length === 0) {
+        console.warn("No images found for slideshow");
+        return;
     }
+
+    // Плавное исчезновение
+    imageEl.style.opacity = 0;
+
+    setTimeout(() => {
+        imageEl.src = images[slideIndex];
+        imageEl.style.opacity = 1;
+
+        slideIndex = (slideIndex + 1) % images.length;
+    }, 800);
+}
+
+/**
+ * Запускает слайдшоу (если есть изображения)
+ */
+function startSlideShow() {
+    const images = getImages();
+
+    if (images.length === 0) {
+        console.warn("Slideshow not started — no images");
+        return;
+    }
+
+    // Первый кадр
     changeImage();
-    setInterval(changeImage, 5000)
 
+    // Интервал переключения
+    slideTimer = setInterval(changeImage, 5000);
 }
 
+/**
+ * Загружает изображения с сервера и запускает слайдшоу
+ */
+function loadImages() {
+    fetchImages(1, 20)
+        .then(data => {
+            // сохраняем в глобальный store
+            setImages(data.images || []);
 
-function loadImages(){
-    fetch('images.json')
-    .then(response => response.json())
-    .then(data => {
-        images = data
-        startSlideShow();
-    })
-    .catch(()=> startSlideShow())
+            // запускаем слайдшоу
+            startSlideShow();
+        })
+        .catch(err => {
+            console.error("Failed to load images:", err);
+
+            // даже если сервер упал — запускаем пустое слайдшоу
+            startSlideShow();
+        });
 }
 
-loadImages()
+// Старт
+loadImages();
